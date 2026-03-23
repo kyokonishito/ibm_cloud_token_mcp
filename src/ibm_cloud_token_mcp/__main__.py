@@ -10,17 +10,13 @@ Usage:
 import sys
 import argparse
 import logging
-import os
 
 from .config import Config
 from .server import create_server
 
-# FastMCP のバナーを無効化
-os.environ["FASTMCP_ENV"] = "production"
-
 # ロギング設定
 logging.basicConfig(
-    level=logging.WARNING,  # INFO から WARNING に変更してバナーを抑制
+    level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     stream=sys.stderr  # ログは stderr に出力
 )
@@ -68,8 +64,9 @@ def main() -> None:
         logger.info("Creating MCP server")
         mcp = create_server(config)
         
-        # 指定されたトランスポートでサーバーを起動
-        mcp.run(transport=args.transport)
+        # 指定されたトランスポートでサーバーを起動（バナーを無効化）
+        logger.info(f"Starting MCP server with {args.transport} transport")
+        mcp.run(transport=args.transport, show_banner=False)
         
     except ValueError as e:
         logger.error(f"Configuration error: {str(e)}")

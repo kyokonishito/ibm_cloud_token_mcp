@@ -18,8 +18,8 @@ dependencies = [
 ibm-cloud-token-mcp = "ibm_cloud_token_mcp.__main__:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/ibm-cloud-token-mcp"
-Repository = "https://github.com/yourusername/ibm-cloud-token-mcp"
+Homepage = "https://github.com/kyokonishito/ibm_cloud_token_mcp"
+Repository = "https://github.com/kyokonishito/ibm_cloud_token_mcp"
 
 [build-system]
 requires = ["hatchling"]

@@ -64,8 +64,10 @@ def main() -> None:
         logger.info("Creating MCP server")
         mcp = create_server(config)
         
-        # 指定されたトランスポートでサーバーを起動
+        # 指定されたトランスポートでサーバーを起動（バナーを無効化）
         logger.info(f"Starting MCP server with {args.transport} transport")
+        import os
+        os.environ["FASTMCP_QUIET"] = "1"
         mcp.run(transport=args.transport)
         
     except ValueError as e:

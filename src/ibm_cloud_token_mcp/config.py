@@ -11,7 +11,7 @@ class Config:
         # .env ファイルを読み込み（複数の場所を試す）
         self._load_env_files()
         self.api_key = self._load_api_key()
-        self.iam_endpoint = "https://iam.cloud.ibm.com"
+        self.iam_endpoint = os.getenv("IBM_CLOUD_IAM_ENDPOINT", "https://iam.cloud.ibm.com")
     
     def _load_env_files(self) -> None:
         """複数の場所から .env ファイルを読み込む
